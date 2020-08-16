@@ -287,7 +287,12 @@ If `port` is not set, the server will run on port 3000 by default.
     heroku create
     ```
 
-2. [Deploy the app code](https://devcenter.heroku.com/articles/git#deploying-code):
+2. Set nodejs version, so that Heroku will install it during deployment:
+    ```sh
+    heroku config:set NODEJS_VERSION=12.18.3
+    ```
+
+3. [Deploy the app code](https://devcenter.heroku.com/articles/git#deploying-code):
 
     ```sh
     git push heroku master
