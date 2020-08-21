@@ -10,3 +10,11 @@
 (re-frame/reg-event-db
   ::set-size
   (fn-traced [db [_ size]] (assoc db :size size)))
+
+(re-frame/reg-event-db
+  ::start-playing
+  (fn-traced [db _] (assoc db :playing? true)))
+
+(re-frame/reg-event-db
+  ::create-board
+  (fn-traced [db _] (assoc db :board (db/empty-board (:size db)))))
