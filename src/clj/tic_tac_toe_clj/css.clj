@@ -1,7 +1,18 @@
 (ns tic-tac-toe-clj.css
-  (:require [garden.def :refer [defstyles]]))
+  (:require [garden.def :refer [defstyles defkeyframes]]))
+
+(defkeyframes board-line-vertical
+  [:from {:height 0}]
+  [:to {:height "100%"}])
+
+(defkeyframes board-line-horizontal
+  [:from {:width 0}]
+  [:to {:width "100%"}])
 
 (defstyles screen
+  board-line-vertical
+  board-line-horizontal
+
   [[:* {:box-sizing :border-box}]
 
    [:h1.heading {:text-align :center}]
@@ -12,9 +23,19 @@
    [:div.start {:width "140px" :margin "30px auto"}
     [:button {:width "100%" :font-size "1.6rem"}]]
 
-   [:div.cell {:width "60px"
-               :height "60px"
-               :border "1px solid black"
-               :display "inline-block"}]
+   [:div.cell {:display    :inline-block
+               :background :white
+               :opacity    0.1
+               :transition "background .2s ease-out"}
+    [:&:hover {:background "#0b9de8"
+               :cursor     :pointer}]]
 
-   [:div.row {:height "60px"}]])
+   [:div.board {:margin   :auto
+                :position :relative}]
+
+   [:div.board-line {:position :absolute}
+    [:div {:background                "#0b9de8"
+           :opacity                   0.4
+           :border-radius             "10px"
+           :animation-fill-mode       :forwards
+           :animation-timing-function :ease-out}]]])
