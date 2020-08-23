@@ -40,12 +40,12 @@
 
 (defn board-line-inner [size x-offset y-offset]
   (let [vertical? (zero? y-offset)
-        base-delay (+ 0.1 (* size 0.03))]
+        base-delay (+ 0.05 (* size 0.02))]
     {:width              (if (not vertical?) 0 "100%")
      :height             (if vertical? 0 "100%")
-     :animation-duration (str base-delay "s")
+     :animation-duration (str (+ base-delay 0.2) "s")
      :animation-delay    (board-line-inner-delay
-                           (+ base-delay 0.1)
+                           base-delay
                            size
                            x-offset
                            y-offset)
